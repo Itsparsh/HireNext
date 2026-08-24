@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, User, Briefcase, ChevronRight, Quote } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../Context/AuthContext';
 import LoginForm from '../Component/Auth/LoginForm';
 import SocialAuth from '../Component/Auth/SocialAuth';
@@ -28,7 +28,7 @@ const LoginPage = () => {
     try {
       setIsLoading(true);
       // Make sure this matches your backend API setup for OAuth
-      const res = await axios.post('/auth/google', { 
+      const res = await api.post('/auth/google', { 
         token: accessToken, 
         role: activeTab 
       });
@@ -89,7 +89,7 @@ const LoginPage = () => {
         ? { name, email, password, role: activeTab } 
         : { email, password, role: activeTab };
         
-      const res = await axios.post(endpoint, payload);
+      const res = await api.post(endpoint, payload);
       
       if (res.data.success) {
         setIsLoading(false);
