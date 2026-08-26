@@ -8,6 +8,7 @@ export default defineConfig([
   globalIgnores(['dist']),
   {
     files: ['**/*.{js,jsx}'],
+    ignores: ['server/**', 'api/**'],
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
@@ -18,4 +19,10 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    files: ['server/**/*.js', 'api/**/*.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  }
 ])
