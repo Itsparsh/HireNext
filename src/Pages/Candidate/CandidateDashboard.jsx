@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { 
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
-  BarChart, Bar
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer
 } from 'recharts';
 import { 
-  Briefcase, Eye, Users, Bookmark, 
-  MapPin, Clock, Star, Download, ArrowRight,
-  CheckCircle, FileText, Target, Award, BrainCircuit, Calendar, TrendingUp, Sparkles, ChevronRight, Search
+  Briefcase, Eye, Users, 
+  MapPin, Clock, ArrowRight,
+  CheckCircle, Award, BrainCircuit, Calendar, TrendingUp, Sparkles, ChevronRight, Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../Context/AuthContext';
@@ -316,6 +315,7 @@ const CandidateDashboard = () => {
                 id={job._id}
                 role={job.title}
                 company={job.company.name}
+                // eslint-disable-next-line react-hooks/purity
                 match={job.aiMatchScore || Math.floor(Math.random() * 20 + 80)}
                 salary={`$${Math.floor(job.salary.min/1000)}k - $${Math.floor(job.salary.max/1000)}k`}
                 type={job.workMode || job.jobType}

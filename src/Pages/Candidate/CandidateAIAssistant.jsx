@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { BrainCircuit, Send, User, Sparkles, RefreshCw, FileText, Zap, Bot, Code, Briefcase, LineChart, FileSearch, Mic } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { BrainCircuit, Send, User, Sparkles, RefreshCw, FileText, Zap, Bot, LineChart, FileSearch, Mic } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const CandidateAIAssistant = () => {
   const [messages, setMessages] = useState([

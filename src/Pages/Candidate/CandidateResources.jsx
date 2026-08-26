@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Video, FileText, ChevronRight, PlayCircle, X, Search, Filter, Star, Clock, Bookmark, TrendingUp, ChevronDown, Check, SlidersHorizontal, RotateCcw } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { BookOpen, Video, FileText, ChevronRight, PlayCircle, X, Search, Filter, Clock, TrendingUp, ChevronDown, Check, SlidersHorizontal, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 

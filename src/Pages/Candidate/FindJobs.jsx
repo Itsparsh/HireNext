@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import api from '../../api';
 import { 
   Search, Filter, MapPin, Briefcase, DollarSign, Star, 
-  CheckCircle, Clock, ChevronLeft, ChevronRight, Zap, Bookmark, Sparkles, X, Building
+  CheckCircle, Clock, Zap, Bookmark, Sparkles, X, Building
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';

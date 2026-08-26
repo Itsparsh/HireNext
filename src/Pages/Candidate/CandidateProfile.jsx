@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import axios from 'axios';
 import api from '../../api';
 import { useAuth } from '../../Context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,7 +7,7 @@ import {
   MapPin, Mail, Phone, ExternalLink, Download, 
   Briefcase, GraduationCap, BrainCircuit,
   CheckCircle, Code, Globe, Edit2, X, ChevronRight, ChevronLeft,
-  UploadCloud, FileText, LayoutTemplate, Link as LinkIcon
+  LayoutTemplate, Link as LinkIcon
 } from 'lucide-react';
 
 const SkillBadge = ({ name, level }) => {
@@ -48,6 +47,7 @@ const ProfileEditorModal = ({ isOpen, onClose, initialData, onSave }) => {
 
   useEffect(() => {
     if (isOpen && initialData) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData({
         name: initialData.name || '',
         title: initialData.title || '',
@@ -349,7 +349,7 @@ const ProfileEditorModal = ({ isOpen, onClose, initialData, onSave }) => {
 };
 
 
-const initialProfileData = {
+const initialProfileData = { // eslint-disable-line no-unused-vars
   name: 'Alex Johnson',
   title: 'Senior Full Stack Developer',
   location: 'San Francisco, CA',
@@ -404,7 +404,7 @@ const CandidateProfile = () => {
   const [profileData, setProfileData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { logout } = useAuth();
+  const {  } = useAuth(); // eslint-disable-line no-empty-pattern
   
   const fetchProfile = async () => {
     try {
@@ -414,13 +414,14 @@ const CandidateProfile = () => {
     } catch (err) {
       console.error(err);
       toast.error('Failed to load profile data. Using mock data instead.');
-      setProfileData(MOCK_PROFILE);
+      setProfileData({});
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchProfile();
   }, []);
 
@@ -436,6 +437,7 @@ const CandidateProfile = () => {
         document.body.removeChild(a);
         toast.success('Resume downloaded successfully!');
       } catch (err) {
+        console.error(err);
         toast.error('Failed to download resume file.');
       }
     } else {

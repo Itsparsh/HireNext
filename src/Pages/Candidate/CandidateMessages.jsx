@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Search, Send, Paperclip, CheckCircle, Clock, Calendar, 
+import {
+  Search, Send, Paperclip, CheckCircle, Clock,
   MoreVertical, Phone, Video, Info, FileText, CheckCircle2, Circle,
   Briefcase, MapPin, ChevronRight, Check
 } from 'lucide-react';
@@ -109,9 +109,9 @@ const CandidateMessages = () => {
   const toggleTaskStatus = (taskId) => {
     setActiveChat(prev => ({
       ...prev,
-      tasks: prev.tasks.map(t => 
-        t.id === taskId 
-          ? { ...t, status: t.status === 'completed' ? 'pending' : 'completed' } 
+      tasks: prev.tasks.map(t =>
+        t.id === taskId
+          ? { ...t, status: t.status === 'completed' ? 'pending' : 'completed' }
           : t
       )
     }));
@@ -119,16 +119,16 @@ const CandidateMessages = () => {
 
   return (
     <div className="h-[calc(100vh-120px)] flex bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm animate-in fade-in duration-500">
-      
+
       {/* Left Panel: Conversations List */}
       <div className="w-full md:w-80 lg:w-96 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-slate-50/50 dark:bg-slate-900/50">
         <div className="p-6 border-b border-slate-200 dark:border-slate-800">
           <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight mb-4">Messages</h2>
           <div className="relative">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input 
-              type="text" 
-              placeholder="Search conversations..." 
+            <input
+              type="text"
+              placeholder="Search conversations..."
               className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-sm font-semibold outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
             />
           </div>
@@ -136,7 +136,7 @@ const CandidateMessages = () => {
 
         <div className="flex-1 overflow-y-auto p-4 space-y-2 custom-scrollbar">
           {conversations.map(chat => (
-            <div 
+            <div
               key={chat.id}
               onClick={() => handleChatClick(chat)}
               className={`p-4 rounded-2xl cursor-pointer transition-all duration-200 flex items-start gap-4 group ${activeChat.id === chat.id ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50' : 'hover:bg-white dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-700'}`}
@@ -198,7 +198,7 @@ const CandidateMessages = () => {
               <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="w-10 h-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 transition-colors">
                 <MoreVertical size={20} />
               </button>
-              
+
               {isMenuOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg z-50 py-2 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                   <button onClick={() => { setIsMenuOpen(false); setShowProfileModal(true); }} className="w-full px-4 py-2 text-left text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors flex items-center gap-2">
@@ -220,18 +220,17 @@ const CandidateMessages = () => {
         {/* Chat Messages */}
         <div className="flex-1 overflow-y-auto p-8 space-y-6 custom-scrollbar bg-slate-50/30 dark:bg-slate-950/30">
           {messages.map((msg) => (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              key={msg.id} 
+              key={msg.id}
               className={`flex ${msg.sender === 'candidate' ? 'justify-end' : 'justify-start'}`}
             >
               <div className={`max-w-[70%] ${msg.sender === 'candidate' ? 'order-1' : 'order-2'}`}>
-                <div className={`p-4 rounded-2xl text-[15px] leading-relaxed shadow-sm ${
-                  msg.sender === 'candidate' 
-                    ? 'bg-blue-600 text-white rounded-tr-sm' 
+                <div className={`p-4 rounded-2xl text-[15px] leading-relaxed shadow-sm ${msg.sender === 'candidate'
+                    ? 'bg-blue-600 text-white rounded-tr-sm'
                     : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-100 dark:border-slate-700 rounded-tl-sm'
-                }`}>
+                  }`}>
                   {msg.text}
                 </div>
                 <div className={`text-[11px] font-bold text-slate-400 mt-2 flex items-center gap-1 ${msg.sender === 'candidate' ? 'justify-end' : 'justify-start'}`}>
@@ -249,14 +248,14 @@ const CandidateMessages = () => {
             <button type="button" className="w-12 h-12 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 transition-colors shrink-0">
               <Paperclip size={20} />
             </button>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
-              placeholder="Type your message..." 
+              placeholder="Type your message..."
               className="flex-1 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-5 py-3.5 text-[15px] font-medium outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
             />
-            <button 
+            <button
               type="submit"
               disabled={!messageInput.trim()}
               className="w-12 h-12 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:hover:bg-blue-600 text-white flex items-center justify-center transition-colors shrink-0 shadow-md shadow-blue-500/20"
@@ -269,15 +268,15 @@ const CandidateMessages = () => {
 
       {/* Right Panel: Taskboard Context */}
       <div className="w-80 lg:w-96 flex-shrink-0 border-l border-slate-200 dark:border-slate-800 hidden xl:flex flex-col bg-slate-50/50 dark:bg-slate-900/50">
-        
+
         {/* Job Context Header */}
         <div className="p-8 border-b border-slate-200 dark:border-slate-800 text-center">
           <div className="w-20 h-20 mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-4 mb-4 flex items-center justify-center">
-             <Briefcase size={36} className="text-slate-300 dark:text-slate-600" />
+            <Briefcase size={36} className="text-slate-300 dark:text-slate-600" />
           </div>
           <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight mb-1">{activeChat.role}</h3>
           <p className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-4">{activeChat.company}</p>
-          
+
           <div className="flex flex-wrap justify-center gap-2">
             <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center gap-1">
               <MapPin size={12} /> Remote
@@ -301,17 +300,16 @@ const CandidateMessages = () => {
 
           <div className="space-y-3">
             {activeChat.tasks.map(task => (
-              <motion.div 
+              <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                key={task.id} 
+                key={task.id}
                 onClick={() => toggleTaskStatus(task.id)}
-                className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 group shadow-sm ${
-                  task.status === 'completed'
+                className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 group shadow-sm ${task.status === 'completed'
                     ? 'bg-emerald-50/50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-800/50'
                     : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-slate-600'
-                }`}
+                  }`}
               >
                 <div className="flex items-start gap-3">
                   <div className={`mt-0.5 shrink-0 transition-colors ${task.status === 'completed' ? 'text-emerald-500' : 'text-slate-300 dark:text-slate-600 group-hover:text-blue-400'}`}>
@@ -357,9 +355,9 @@ const CandidateMessages = () => {
             </div>
           </div>
         </div>
-        
+
       </div>
-      
+
       {/* View Profile Modal */}
       {showProfileModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm animate-in fade-in p-4">
@@ -368,7 +366,7 @@ const CandidateMessages = () => {
               <img src={activeChat.avatar} alt={activeChat.recruiter} className="w-24 h-24 mx-auto rounded-full object-cover shadow-md mb-4 border-4 border-white dark:border-slate-800" />
               <h2 className="text-xl font-black text-slate-900 dark:text-white mb-1">{activeChat.recruiter}</h2>
               <p className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-6">{activeChat.company}</p>
-              
+
               <div className="flex flex-col gap-3">
                 <button onClick={() => { setShowProfileModal(false); toast.success(`Redirecting to ${activeChat.company}'s full profile...`); }} className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 dark:text-blue-300 font-bold rounded-xl transition-colors">
                   View Full Profile

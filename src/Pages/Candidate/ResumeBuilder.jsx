@@ -4,7 +4,6 @@ import {
 } from 'lucide-react';
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import ResumePDF from '../../Component/ResumePDF';
-import toast from 'react-hot-toast';
 
 const ResumeBuilder = () => {
   // State for Resume Data

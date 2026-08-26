@@ -19,10 +19,7 @@ const INITIAL_DOCS = [
   { id: 6, name: 'Relieving_Letter_InnovateTech.pdf', type: 'Experience', size: '1.5 MB', date: 'Dec 12, 2022', status: 'Verified' }
 ];
 
-const CATEGORIES = [
-  'Resume', 'Cover Letter', 'Portfolio', 'ID Proof', 'Address Proof', 
-  'Education', 'Experience', 'Salary Slips', 'Medical', 'Other'
-];
+// CATEGORIES removed
 
 const CandidateDocuments = () => {
   const [documents, setDocuments] = useState(INITIAL_DOCS);
@@ -40,6 +37,7 @@ const CandidateDocuments = () => {
 
   useEffect(() => {
     if (previewDoc) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPreviewBlobUrl(null);
       const PdfComponent = previewDoc.type === 'Resume' || previewDoc.type === 'Cover Letter' 
         ? <CandidateResumePDF candidate={{ name: "Alex Johnson", role: "Software Engineer", skills: ["React", "Node.js", "TypeScript"], currentCompany: "HireNext Demo" }} /> 

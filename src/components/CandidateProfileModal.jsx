@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, Mail, Phone, Briefcase, GraduationCap, Award, ExternalLink, Download, MessageSquare, Star, Zap } from 'lucide-react';
+import { X, MapPin, Mail, Briefcase, GraduationCap, Award, Download, MessageSquare, Star, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import CandidateResumePDF from './CandidateResumePDF';
@@ -27,6 +27,7 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
       toast.success("Resume downloaded successfully!");
     } catch (error) {
       console.error(error);
+
       toast.error("Failed to generate resume PDF.");
     } finally {
       setIsDownloading(false);
@@ -39,16 +40,16 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex justify-end">
         {/* Backdrop */}
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
           className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
         ></motion.div>
-        
+
         {/* Slide-over Panel */}
-        <motion.div 
+        <motion.div
           initial={{ x: '100%', opacity: 0.5 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: '100%', opacity: 0 }}
@@ -57,7 +58,7 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
         >
           {/* Header Background */}
           <div className="h-32 bg-gradient-to-r from-indigo-500 to-cyan-500 relative shrink-0">
-            <button 
+            <button
               onClick={onClose}
               className="absolute top-6 right-6 p-2 bg-white/20 hover:bg-white/30 text-white rounded-full backdrop-blur-md transition-colors"
             >
@@ -75,7 +76,7 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
                   </div>
                   <div className="pb-2">
                     <h2 className="text-3xl font-black text-slate-900 dark:text-white flex items-center gap-2">
-                      {candidate.name} 
+                      {candidate.name}
                       {candidate.matchScore > 90 && <Zap size={20} className="text-amber-500 fill-current" title="Top Match" />}
                     </h2>
                     <p className="text-lg font-bold text-slate-500 dark:text-slate-400">{candidate.role}</p>
@@ -104,7 +105,7 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
                     <Star size={18} className="text-blue-500" /> Executive Summary
                   </h3>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                    Passionate and highly driven {candidate.role} with a proven track record of delivering scalable solutions. 
+                    Passionate and highly driven {candidate.role} with a proven track record of delivering scalable solutions.
                     Strongly focused on modern web architectures, user-centric design, and collaborating with cross-functional teams to exceed expectations.
                   </p>
                 </section>
@@ -165,13 +166,13 @@ const CandidateProfileModal = ({ isOpen, onClose, candidate }) => {
 
           {/* Sticky Bottom Actions */}
           <div className="absolute bottom-0 left-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 p-6 flex gap-4">
-            <button 
+            <button
               onClick={handleDownloadResume}
               className={`flex-1 py-3.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-black rounded-xl transition-colors flex items-center justify-center gap-2 ${isDownloading ? 'opacity-75 cursor-wait' : 'hover:bg-slate-200 dark:hover:bg-slate-700'}`}
             >
               {isDownloading ? 'Generating...' : <><Download size={18} /> Download Resume</>}
             </button>
-            <button 
+            <button
               onClick={() => {
                 onClose();
                 navigate('/recruiter/messages', { state: { candidate } });

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Video, User, CheckCircle, ExternalLink, Filter } from 'lucide-react';
+import { Calendar, Clock, Video, User, CheckCircle, ExternalLink } from 'lucide-react';
 
 const mockInterviews = [
   {

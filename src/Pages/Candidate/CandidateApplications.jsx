@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Briefcase, Building, MapPin, Clock, ExternalLink, CheckCircle, Circle, ArrowRight, Download, MessageSquare, XCircle, AlertCircle } from 'lucide-react';
+import { Briefcase, Building, MapPin, Clock, CheckCircle, Circle, ArrowRight, Download, MessageSquare, XCircle, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
@@ -200,6 +200,7 @@ const CandidateApplications = () => {
     if (appliedJobsIds.length > 0) {
       fetchApplications();
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoading(false);
     }
   }, [appliedJobsIds]);

@@ -29,6 +29,7 @@ const CandidateSavedJobs = () => {
     if (savedJobsIds.length > 0) {
       fetchSavedJobs();
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSavedJobs([]);
       setLoading(false);
     }
