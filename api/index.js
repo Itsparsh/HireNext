@@ -1,3 +1,4 @@
-import app from '../server/index.js';
-
-export default app;
+/* eslint-env node */
+/* eslint-disable no-undef */
+const app = require('../server/index.js');
+module.exports = app;
