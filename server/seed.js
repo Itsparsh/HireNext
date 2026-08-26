@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, no-unused-vars */
+/* global require, process, module, __dirname */
 
 const mongoose = require('mongoose');
 const Job = require('./models/Job');

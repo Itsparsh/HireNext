@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, no-unused-vars */
+/* global require, process, module, __dirname */
 
 const express = require('express');
 const cors = require('cors');

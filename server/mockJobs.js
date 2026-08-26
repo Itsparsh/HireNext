@@ -1,3 +1,4 @@
+/* global require, process, module, __dirname */
 const companies = [
   { name: 'Google', domain: 'google.com' },
   { name: 'Microsoft', domain: 'microsoft.com' },
