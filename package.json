@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "vite",
-    "build": "vite build",
+    "build": "npm install --prefix server && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
