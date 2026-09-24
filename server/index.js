@@ -20,7 +20,10 @@ connectDB().then(async () => {
 
 // Security Middleware
 app.use(helmet());
-app.use(cors({ origin: true, credentials: true })); // Allow all for local dev
+app.use(cors({ 
+  origin: process.env.FRONTEND_URL || true, 
+  credentials: true 
+}));
 app.use(express.json({ extended: false }));
 app.use(cookieParser());
 
