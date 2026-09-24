@@ -13,6 +13,9 @@ const seedDatabase = require('./seed');
 
 const app = express();
 
+// Trust the proxy (Render/Railway) to allow secure cookies over HTTPS
+app.set('trust proxy', 1);
+
 // Connect to Database asynchronously so it doesn't block server startup
 connectDB().then(async () => {
   await seedDatabase();
