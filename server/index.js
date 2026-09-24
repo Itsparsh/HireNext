@@ -39,14 +39,10 @@ app.use('/api/company', require('./routes/company'));
 app.use('/api/recruiter/jobs', require('./routes/recruiterJobs'));
 app.use('/api/applications', require('./routes/applications'));
 
-// Serve frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../dist')));
-
-  app.get(/.*/, (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
-  });
-}
+// Basic route for backend health check
+app.get('/', (req, res) => {
+  res.send('HireNext API is running successfully!');
+});
 
 const PORT = process.env.PORT || 5001;
 
